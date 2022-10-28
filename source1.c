@@ -17,14 +17,14 @@
 
 #include "header.h"
 
-Matrix* createMatrix(int row, int line, float num) {
+Matrix* createMatrix(int row, int line) {
   Matrix* matrix = NULL;
   if (row > 0 && line > 0) {
     matrix = (Matrix*)malloc(sizeof(Matrix));
     matrix->row = row;
     matrix->line = line;
     matrix->data = (float*)malloc(sizeof(float) * row * line);
-    memset(matrix->data, num, sizeof(float) * row * line);
+    memset(matrix->data, 0, sizeof(float) * row * line);
     return matrix;
   } else
     return NULL;
@@ -45,7 +45,7 @@ void deleteMatrix(Matrix** matrix) {
 Matrix* copyMatrix(Matrix* matrix_toCopy) {
   if (matrix_toCopy) {
     Matrix* matrix =
-        createMatrix(matrix_toCopy->row, matrix_toCopy->line, 0.0f);
+        createMatrix(matrix_toCopy->row, matrix_toCopy->line);
     memcpy(matrix->data, matrix_toCopy->data,
            matrix_toCopy->line * matrix_toCopy->row * sizeof(float));
     return matrix;
@@ -78,7 +78,7 @@ void printMatrix(Matrix* matrix) {
 
 Matrix* addScalar(Matrix* matrix, float num) {
   if (matrix) {
-    Matrix* matrix_res = createMatrix(matrix->row, matrix->line, 0.0f);
+    Matrix* matrix_res = createMatrix(matrix->row, matrix->line);
     for (int i = 0; i < matrix->line; i++) {
       for (int j = 0; j < matrix->row; j++) {
         matrix_res->data[i * matrix_res->row + j] =
@@ -94,7 +94,7 @@ Matrix* addScalar(Matrix* matrix, float num) {
 
 Matrix* subtractScalar(Matrix* matrix, float num) {
   if (matrix) {
-    Matrix* matrix_res = createMatrix(matrix->row, matrix->line, 0.0f);
+    Matrix* matrix_res = createMatrix(matrix->row, matrix->line);
     for (int i = 0; i < matrix->line; i++) {
       for (int j = 0; j < matrix->row; j++) {
         matrix_res->data[i * matrix_res->row + j] =
@@ -110,7 +110,7 @@ Matrix* subtractScalar(Matrix* matrix, float num) {
 
 Matrix* multiplyScalar(Matrix* matrix, float num) {
   if (matrix) {
-    Matrix* matrix_res = createMatrix(matrix->row, matrix->line, 0.0f);
+    Matrix* matrix_res = createMatrix(matrix->row, matrix->line);
     for (int i = 0; i < matrix->line; i++) {
       for (int j = 0; j < matrix->row; j++) {
         matrix_res->data[i * matrix_res->row + j] =
@@ -127,7 +127,7 @@ Matrix* multiplyScalar(Matrix* matrix, float num) {
 Matrix* addMatrix(Matrix* matrix_A, Matrix* matrix_B) {
   if (matrix_A && matrix_B) {
     if (matrix_A->row == matrix_B->row && matrix_A->line == matrix_B->line) {
-      Matrix* matrix_res = createMatrix(matrix_A->row, matrix_A->line, 0.0f);
+      Matrix* matrix_res = createMatrix(matrix_A->row, matrix_A->line);
       for (int i = 0; i < matrix_A->line; i++) {
         for (int j = 0; j < matrix_A->row; j++) {
           matrix_res->data[i * matrix_res->row + j] =
@@ -153,7 +153,7 @@ Matrix* addMatrix(Matrix* matrix_A, Matrix* matrix_B) {
 Matrix* subtractMatrix(Matrix* matrix_A, Matrix* matrix_B) {
   if (matrix_A && matrix_B) {
     if (matrix_A->row == matrix_B->row && matrix_A->line == matrix_B->line) {
-      Matrix* matrix_res = createMatrix(matrix_A->row, matrix_A->line, 0.0f);
+      Matrix* matrix_res = createMatrix(matrix_A->row, matrix_A->line);
       for (int i = 0; i < matrix_A->line; i++) {
         for (int j = 0; j < matrix_A->row; j++) {
           matrix_res->data[i * matrix_res->row + j] =
@@ -179,7 +179,7 @@ Matrix* subtractMatrix(Matrix* matrix_A, Matrix* matrix_B) {
 Matrix* multiplyMatrix(Matrix* matrix_A, Matrix* matrix_B) {
   if (matrix_A && matrix_B) {
     if (matrix_A->row == matrix_B->line) {
-      Matrix* matrix_res = createMatrix(matrix_B->row, matrix_A->line, 0.0f);
+      Matrix* matrix_res = createMatrix(matrix_B->row, matrix_A->line);
       for (int i = 0; i < matrix_A->row; i++) {
         for (int j = 0; j < matrix_B->line; j++) {
           for (int k = 0; k < matrix_A->line; k++) {

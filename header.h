@@ -24,7 +24,7 @@ typedef struct {
   float* data;
 } Matrix;
 
-Matrix* createMatrix(int, int, float);
+Matrix* createMatrix(int, int);
 void deleteMatrix(Matrix**);
 Matrix* copyMatrix(Matrix*);
 void setMatrix(Matrix*, float*);

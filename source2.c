@@ -21,8 +21,12 @@ float value1[] = {-1, -2, -3, -4, -5, -6, -7, -8, -9};
 float value2[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
 
 int main(int argc, char* argv[]) {
-  Matrix* matrix1 = createMatrix(3, 3, -1.0f);
-  Matrix* matrix2 = createMatrix(3, 3, 5.0f);
+  Matrix* matrix1 = createMatrix(3, 3);
+  Matrix* matrix2 = createMatrix(3, 3);
+  printf("初始化矩阵1: \n");
+  printMatrix(matrix1);
+  printf("初始化矩阵2: \n");
+  printMatrix(matrix2);
 
   setMatrix(matrix1, value1);
   printf("矩阵1: \n");
@@ -73,7 +77,7 @@ int main(int argc, char* argv[]) {
   deleteMatrix(&matrix6);
   deleteMatrix(&matrix7);
 
-  matrix1 = createMatrix(3, 3, -1.0f);
+  matrix1 = createMatrix(3, 3);
   setMatrix(matrix1, value1);
   printf("再次创建矩阵1: \n");
   printMatrix(matrix1);
