@@ -55,10 +55,10 @@ Matrix* copyMatrix(Matrix* matrix_toCopy) {
   }
 }
 
-void setMatrix(Matrix* matrix, float* array) {
+void setMatrix(Matrix* matrix, float* array, int length) {
   if (matrix) {
     if (matrix->data != NULL) {
-      memcpy(matrix->data, array, matrix->row * matrix->line * sizeof(float));
+      memcpy(matrix->data, array, length);
     }
   } else {
     printf("矩阵不存在! \n");

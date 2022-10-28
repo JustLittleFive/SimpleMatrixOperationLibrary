@@ -27,7 +27,7 @@ typedef struct {
 Matrix* createMatrix(int, int);
 void deleteMatrix(Matrix**);
 Matrix* copyMatrix(Matrix*);
-void setMatrix(Matrix*, float*);
+void setMatrix(Matrix*, float*, int);
 void printMatrix(Matrix*);
 
 Matrix* addScalar(Matrix*, float);

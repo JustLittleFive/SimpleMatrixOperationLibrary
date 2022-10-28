@@ -17,8 +17,8 @@
 
 #include "header.h"
 
-float value1[] = {-1, -2, -3, -4, -5, -6, -7, -8, -9};
-float value2[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+float value1[] = {-1, -2, -3, -4, -5};
+float value2[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1};
 
 int main(int argc, char* argv[]) {
   Matrix* matrix1 = createMatrix(3, 3);
@@ -28,10 +28,10 @@ int main(int argc, char* argv[]) {
   printf("初始化矩阵2: \n");
   printMatrix(matrix2);
 
-  setMatrix(matrix1, value1);
+  setMatrix(matrix1, value1, sizeof(value1));
   printf("矩阵1: \n");
   printMatrix(matrix1);
-  setMatrix(matrix2, value2);
+  setMatrix(matrix2, value2, sizeof(value2));
   printf("矩阵2: \n");
   printMatrix(matrix2);
 
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
   deleteMatrix(&matrix7);
 
   matrix1 = createMatrix(3, 3);
-  setMatrix(matrix1, value1);
+  setMatrix(matrix1, value1, sizeof(value1));
   printf("再次创建矩阵1: \n");
   printMatrix(matrix1);
 
