@@ -19,16 +19,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct {
-  int row, line;
-  float* data;
-} Matrix;
+// typedef struct {
+//   int row, line;
+//   float* data;
+// } Matrix;
+
+typedef struct Matrix Matrix;
 
 Matrix* createMatrix(int, int);
 void deleteMatrix(Matrix**);
 Matrix* copyMatrix(Matrix*);
 void setMatrix(Matrix*, float*, int);
 void printMatrix(Matrix*);
+
+int getMatrixRow(Matrix*);
+int getMatrixLine(Matrix*);
+float* getMatrixData(Matrix*);
 
 Matrix* addScalar(Matrix*, float);
 Matrix* subtractScalar(Matrix*, float);

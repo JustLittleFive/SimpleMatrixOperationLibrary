@@ -17,6 +17,11 @@
 
 #include "header.h"
 
+struct Matrix {
+  int row, line;
+  float* data;
+};
+
 Matrix* createMatrix(int row, int line) {
   Matrix* matrix = NULL;
   if (row > 0 && line > 0) {
@@ -44,8 +49,7 @@ void deleteMatrix(Matrix** matrix) {
 
 Matrix* copyMatrix(Matrix* matrix_toCopy) {
   if (matrix_toCopy) {
-    Matrix* matrix =
-        createMatrix(matrix_toCopy->row, matrix_toCopy->line);
+    Matrix* matrix = createMatrix(matrix_toCopy->row, matrix_toCopy->line);
     memcpy(matrix->data, matrix_toCopy->data,
            matrix_toCopy->line * matrix_toCopy->row * sizeof(float));
     return matrix;
@@ -73,6 +77,33 @@ void printMatrix(Matrix* matrix) {
     }
   } else {
     printf("矩阵不存在! \n");
+  }
+}
+
+int getMatrixRow(Matrix* matrix) {
+  if (matrix) {
+    return matrix->row;
+  } else {
+    printf("矩阵不存在! \n");
+    return 0;
+  }
+}
+
+int getMatrixLine(Matrix* matrix) {
+  if (matrix) {
+    return matrix->line;
+  } else {
+    printf("矩阵不存在! \n");
+    return 0;
+  }
+}
+
+float* getMatrixData(Matrix* matrix) {
+  if (matrix) {
+    return matrix->data;
+  } else {
+    printf("矩阵不存在! \n");
+    return NULL;
   }
 }
 
